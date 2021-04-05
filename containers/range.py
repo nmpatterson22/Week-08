@@ -20,7 +20,7 @@ def range(a, b=None, c=None):
     NOTE:
     For efficiency reasons, Python's built-in range object is written in the C
     programming language rather than natively in python.
-    You can find the source code online at 
+    You can find the source code online at
     https://hg.python.org/cpython/file/ee7b713fec71/Objects/rangeobject.c
     The link takes you to a file that is 1445 lines long,
     and all it does is implement this simple functionality.
@@ -33,11 +33,12 @@ def range(a, b=None, c=None):
     C code must manage lots of details about the computer manually
     that python code automates for you.
     Carefully written C code can be faster than the corresponding
-    python code because it can remove some of the overhead of this automation process,
+    python code because it can remove some of the overhead
+    of this automation process,
     but the resulting code is much longer and harder to read/write.
     '''
 
-    if b is none:
+    if b is None:
         begin = 0
         end = a
         while begin < end:
@@ -55,10 +56,9 @@ def range(a, b=None, c=None):
         end = b
         if begin > end:
             if 0 < c:
-    # return empty stack            
                 return []
             while begin > end:
-                beg += c
+                begin += c
                 yield begin - c
         else:
             while begin < end:
@@ -66,5 +66,3 @@ def range(a, b=None, c=None):
                     return []
                 yield begin
                 begin += c
-
-                
