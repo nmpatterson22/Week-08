@@ -92,10 +92,10 @@ class FibIter:
             self.i += 1
             return 1
         else:
-            self.i += 1
-            self.f2 += self.f1 + self.f0
-            self.f0 += self.f1
-            self.f1 += self.f2
+            self.i = 1
+            self.f2 = self.f1 + self.f0
+            self.f0 = self.f1
+            self.f1 = self.f2
             return self.f2
 
 
