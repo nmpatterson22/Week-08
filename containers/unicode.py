@@ -111,7 +111,14 @@ class NormalizedStr:
         methods,
         and return an instance of that class here.
         '''
-        return NormalizedIter(self.text)
+        return self
+
+    def __next__(self):
+        if self.i == len(self.text) - 1:
+            raise StopIteration
+        else:
+            self.i += 1
+            return self.text[self.i]
 
 
 class NormalizedIter:
@@ -120,10 +127,8 @@ class NormalizedIter:
         self.i = -1
 
     def __next__(self):
-        if self.i == len(self.text) <= self.i:
+        if self.i == len(self.text) - 1:
             raise StopIteration
         else:
-            next = self.text[self.i]
-            # insert next item into iterative class
             self.i += 1
-            return next
+            return self.text[self.i]
