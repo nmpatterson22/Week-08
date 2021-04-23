@@ -25,7 +25,7 @@ class NormalizedStr:
 
     def __init__(self, text, normal_form='NFC'):
         self.normal = normal_form
-        self.text = unicodedata.normalize(self.norm, text)
+        self.text = unicodedata.normalize(self.normal, text)
         self.i = -1
 
     def __repr__(self):
