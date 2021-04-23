@@ -1,7 +1,5 @@
 # containers
 
 Build status:
-
-1. [![](https://github.com/nmpatterson22/containers/workflows/tests-fibonacci/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-fibonacci)
-1. [![](https://github.com/nmpatterson22/containers/workflows/tests-range/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-range)
-1. [![](https://github.com/nmpatterson22/containers/workflows/tests-unicode/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-unicode)
+[![tests-BinaryTree](https://github.com/nmpatterson22/Week-08/actions/workflows/tests-binarytree.yml/badge.svg)](https://github.com/nmpatterson22/week08/actions/workflows/tests-binarytree.yml)
+[![tests-BST](https://github.com/nmpatterson22/Week-08/workflows/tests-BST/badge.svg)](https://github.com/nmpatterson22/week08/actions?query=workflow%3Atests-BST)
