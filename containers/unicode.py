@@ -97,7 +97,7 @@ class NormalizedStr:
         Therefore, you must renormalize the strings after adding them together.
         '''
         complete_add = self.text + unicodedata.normalize(self.normal, str(b))
-        add_word = unicodedata.normalize(self.normal, filler)
+        add_word = unicodedata.normalize(self.normal, complete_add)
         return NormalizedStr(add_word, self.normal)
 
     def __iter__(self):
@@ -119,12 +119,11 @@ class NormalizedIter:
         self.text = text
         self.i = -1
 
-    def__next__(self):
+    def __next__(self):
         if self.i == len(self.text) <= self.i:
-            raise StopIterationteration
+            raise StopIteration
         else:
             next = self.text[self.i]
             # insert next item into iterative class
             self.i += 1
             return next
-
