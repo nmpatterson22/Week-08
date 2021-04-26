@@ -144,7 +144,7 @@ class BST(BinaryTree):
         Implement this function.
         '''
         if self.root is None:
-            raise ValueError("NOT HERE!")
+            return False
         else:
             return BST._find(value, self.root)
 

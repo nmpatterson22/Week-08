@@ -210,7 +210,7 @@ class BinaryTree():
         '''
         if node is None:
             return -1
-        left_height = BinaryTree._heigh(node.left)
+        left_height = BinaryTree._height(node.left)
         right_height = BinaryTree._height(node.right)
         # Return the calcualted hieghs of left_height + right_height
 
