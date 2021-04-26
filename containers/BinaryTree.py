@@ -209,7 +209,7 @@ class BinaryTree():
         return 1 (for the current node) plus the max of the left and
         right _heights calculated above
         '''
-        if node is None:
+        if node:
             left_height = BinaryTree._height(node.left) + 1
             right_height = BinaryTree._height(node.right) + 1
             return max(left_height, right_height)
