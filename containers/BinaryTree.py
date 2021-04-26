@@ -149,6 +149,7 @@ class BinaryTree():
         if start:
             traversal = self.postorder(start.left, traversal)
             traversal = self.postorder(start.right, traversal)
+            traversal.append(start.value)
         return traversal
 
     def __len__(self):
@@ -209,8 +210,9 @@ class BinaryTree():
         right _heights calculated above
         '''
         if node is None:
-            left_height = BinaryTree._height(node.left) + 1
-            right_height = BinaryTree._height(node.right) + 1
-            return max(left_height, right_height)
+            return -1
+            left = BinaryTree._height(node.left) + 1
+            right = BinaryTree._height(node.right) + 1
+            return max(left, right)
         else:
             return 0

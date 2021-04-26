@@ -79,7 +79,7 @@ class BST(BinaryTree):
             else:
                 ret = False
         if node.right:
-            if node.value <= BST._find_smallest(node.right)
+            if node.value <= BST._find_smallest(node.right):
                 ret &= BST._is_bst_satisfied(node.right)
             else:
                 ret = False
