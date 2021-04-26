@@ -91,10 +91,6 @@ class BST(BinaryTree):
 
         FIXME:
         Implement this function.
-
-        HINT:
-        Create a staticmethod helper function following the pattern of
-        _is_bst_satisfied.
         '''
         if self.root is None:
             self.root = Node(value)
@@ -196,9 +192,6 @@ class BST(BinaryTree):
 
         FIXME:
         Implement this function.
-
-        HINT:
-        Follow the pattern of the _find_smallest function.
         '''
         if self.root is None:
             raise ValueError('Error: Nothing in Tree')
