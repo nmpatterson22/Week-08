@@ -117,7 +117,7 @@ class BinaryTree():
         elif traversal_type == 'inorder':
             return self.inorder(self.root, [])
         elif traversal_type == 'postorder':
-            return self.postorderrder(self.root, [])
+            return self.postorder(self.root, [])
         else:
             raise ValueError(str(traversal_type) + 'is no good!')
 
@@ -175,7 +175,7 @@ class BinaryTree():
         '''
         if node:
             # Pseudo: If result 1 (left) add result of hekper function + 1 to
-            l_child = BinaryTree.__len__helpter(node.left) + 1
+            l_child = BinaryTree.__len__helper(node.left) + 1
             r_child = BinaryTree.__len__helper(node.right)
             return l_child + r_child
         else:
