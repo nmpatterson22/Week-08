@@ -117,7 +117,7 @@ class BinaryTree():
         elif traversal_type == 'inorder':
             return self.inorder(self.root, [])
         elif traversal_type == 'postorder':
-            return self.postrder(self.root, [])
+            return self.postorderrder(self.root, [])
         else:
             raise ValueError(str(traversal_type) + 'is no good!')
 
@@ -193,7 +193,7 @@ class BinaryTree():
         HINT:
         See how the __len__ method calls its helper staticmethod.
         '''
-        return BinaryTree._heigh(self.root)
+        return BinaryTree._height(self.root)
 
     @staticmethod
     def _height(node):
