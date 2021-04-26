@@ -140,15 +140,15 @@ class BinaryTree():
         '''
         # this set of function moves the append "across" the tree
         if start:
-            traversal = self.preorder(start.left, traversal)
+            traversal = self.inorder(start.left, traversal)
             traversal.append(start.value)
-            traversal = self.preorder(start.right, traversal)
+            traversal = self.inorder(start.right, traversal)
         return traversal
 
     def postorder(self, start, traversal):
         if start:
-            traversal = self.preorder(start.left, traversal)
-            traversal = self.preorder(start.right, traversal)
+            traversal = self.postorder(start.left, traversal)
+            traversal = self.postorder(start.right, traversal)
         return traversal
 
     def __len__(self):
@@ -209,9 +209,8 @@ class BinaryTree():
         right _heights calculated above
         '''
         if node is None:
-            return -1
-        left_height = BinaryTree._height(node.left)
-        right_height = BinaryTree._height(node.right)
-        # Return the calcualted hieghs of left_height + right_height
-
-        return 1 + max(left_height + right_height)
+            left_height = BinaryTree._height(node.left) + 1
+            right_height = BinaryTree._height(node.right) + 1
+            return max(left, right)
+        else:
+            return 0
