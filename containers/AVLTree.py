@@ -47,8 +47,7 @@ class AVLTree(BST):
         Returns True if the avl tree satisfies that all nodes have a
         balance factor in [-1,0,1].
         '''
-        if self.root:
-            return AVLTree._is_avl_satisfied(self.root)
+        return AVLTree._is_avl_satisfied(self.root)
 
     @staticmethod
     def _is_avl_satisfied(node):
