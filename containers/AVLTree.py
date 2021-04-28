@@ -130,10 +130,16 @@ class AVLTree(BST):
         function for the BST,
         but it will also call the left and right rebalancing functions.
         '''
-        if self.root:
-            self.root = AVLTree._insert(self.root, value)
-        else:
+        if not self.root:
             self.root = Node(value)
+        if value == self.root.value:
+            return
+        else:
+            self._insert(value, self.root)
+            if not self._is_avl_satisfied():
+                self.root = self.rebalance(self.root)
+            if not self.is_avl_satisfied():
+                self.root = self.rebalance(self.root)
 
     @staticmethod
     def _insert(node, value):
