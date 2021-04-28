@@ -109,7 +109,7 @@ class AVLTree(BST):
             root_2.left = node.left.left
             root_2.left = root_1
         else:
-            root_1 = node3
+            root_1 = node
         return root_1
 
     def insert(self, value):
@@ -152,7 +152,7 @@ class AVLTree(BST):
         else:
             node.left = AVLTree._rebalance(node.left)
             node.right = AVLTree._rebalance(node.right)
-            node = AVL._rebalance(node)
+            node = AVLTree._rebalance(node)
         return node
 
     def rebalance(self, begin):
