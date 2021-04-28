@@ -55,11 +55,17 @@ class AVLTree(BST):
         FIXME:
         Implement this function.
         '''
+        ret = True
         if node is None:
-            return True
-        first = AVLTree.is_avl_satisfied(node.left)
-        second = AVLTree.is_avl_satisfied(node.right)
-        return AVLTree._balance_factor(node) in [-1, 0, 1] and first and second
+            return ret
+        if not AVLTree._isbst_satisifed(node)
+            return False
+        if AVLTree._balance_factor(node) in [-1, 0, 1]:
+            first = AVLTree.is_avl_satisfied(node.left)
+            second = AVLTree.is_avl_satisfied(node.right)
+        return ret and first and second
+        else:
+            return False
 
     @staticmethod
     def _left_rotate(node):
