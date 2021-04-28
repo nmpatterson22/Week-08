@@ -58,12 +58,12 @@ class AVLTree(BST):
         ret = True
         if node is None:
             return ret
-        if not AVLTree._isbst_satisifed(node)
+        if not AVLTree._is_bst_satisifed(node):
             return False
         if AVLTree._balance_factor(node) in [-1, 0, 1]:
             first = AVLTree.is_avl_satisfied(node.left)
             second = AVLTree.is_avl_satisfied(node.right)
-        return ret and first and second
+            return ret and first and second
         else:
             return False
 
