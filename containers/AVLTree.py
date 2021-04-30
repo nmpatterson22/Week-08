@@ -23,9 +23,7 @@ class AVLTree(BST):
         FIXME:
         Implement this function.
         '''
-        self.root = None
-        if xs:
-            self.insert_list(xs)
+        super().__init(xs)
 
     def balance_factor(self):
         '''
@@ -57,9 +55,10 @@ class AVLTree(BST):
         '''
         if node is None:
             return True
-        t1 = AVLTree._is_avl_satisfied(node.left)
-        t2 = AVLTree._is_avl_satisfied(node.right)
-        return AVLTree._balance_factor(node) in [-1, 0, 1] and t1 and t2
+        else:
+            t1 = AVLTree._is_avl_satisfied(node.left)
+            t2 = AVLTree._is_avl_satisfied(node.right)
+            return AVLTree._balance_factor(node) in [-1, 0, 1] and t1 and t2
 
     @staticmethod
     def _left_rotate(node):
@@ -170,19 +169,18 @@ class AVLTree(BST):
         But both the insert function needs the rebalancing code,
         so I recommend including that code here.
         '''
-        if node is None:
-            return
-        balance = AVLTree._balance_factor(node)
-        if balance < 0:
+        balance_factor = AVLTree._balance_factor(node)
+        assert balance_factor in [-2, -1, 0, 1, 2]
+        if balance_factor < 0:
             if AVLTree._balance_factor(node.right) > 0:
                 node.right = AVLTree._right_rotate(node.right)
                 node = AVLTree._left_rotate(node)
             else:
                 node = AVLTree._left_rotate(node)
-        elif balance > 0:
+        elif balance_factor > 0:
             if AVLTree._balance_factor(node.left) < 0:
                 node.left = AVLTree._left_rotate(node.left)
                 node = AVLTree._right_rotate(node)
             else:
                 node = AVLTree._right_rotate(node)
-            return node
+        return node
