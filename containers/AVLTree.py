@@ -74,18 +74,13 @@ class AVLTree(BST):
         fairly different from our class hierarchy,
         however, so you will have to adapt their code.
         '''
-        if node is None or node.right is None:
-            return node
-            root_1 = Node(node.value)
-            root_1.left = node.left
-            root_1.right = node.right.left
-
-            root_2 = Node(node.right.value)
-            root_2.right = node.right.right
-            root_2.left = root_1
-        else:
-            root_2 = node
-        return root_2
+        assert(node.right is not None)
+        root = Node(node.right.value)
+        root.right = node.right.right
+        root.left = Node(node.value)
+        root.left.left = node.left
+        root.left.right = node.right.left
+        return root
 
     @staticmethod
     def _right_rotate(node):
@@ -100,18 +95,13 @@ class AVLTree(BST):
         however, so you will have to adapt their code.
         '''
         # same pattern as above but "flipped" for left nodes
-        if node is None or node.left is None:
-            return node
-            root_1 = Node(node.value)
-            root_1.right = node.right
-            root_1.left = node.left.right
-
-            root_2 = Node(node.left.value)
-            root_2.left = node.left.left
-            root_2.left = root_1
-        else:
-            root_1 = node
-        return root_1
+        assert(node.left is not None)
+        root = Node(node.left.value)
+        root.left = node.left.left
+        root.right = Node(node.value)
+        root.right.right = node.right
+        root.right.left = node.left.right
+        return root
 
     def insert(self, value):
         '''
@@ -149,18 +139,6 @@ class AVLTree(BST):
             self.root = Node(value)
         else:
             self.root = go(self.root)
-
-    def rebalance(self, begin):
-        '''new function that takes parameters self and inception begin to
-        help _rebalance function'''
-        if begin is None:
-            return
-        if self._balance_factor(begin) in [-2, 2]:
-            begin = self._rebalance(begin)
-        else:
-            begin.right = self.reabalance(begin.right)
-            begin.left = self.rebalance(begin.right)
-        return begin
 
     @staticmethod
     def _rebalance(node):
