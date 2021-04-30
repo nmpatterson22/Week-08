@@ -59,7 +59,7 @@ class BST(BinaryTree):
 
     def __equal__(self, time2):
         l_1 = self.to_list('inorder')
-        l_2 = time2.t0_list('inorder')
+        l_2 = time2.to_list('inorder')
         for x in l_1:
             if x not in l_2:
                 return False
