@@ -60,11 +60,11 @@ class BST(BinaryTree):
     def __equal__(self, time2):
         l_1 = self.to_list('inorder')
         l_2 = time2.t0_list('inorder')
-        for x in list_1:
+        for x in l_1:
             if x not in l_2:
                 return False
         for x in l_2:
-            if x not in l_1
+            if x not in l_1:
                 return False
         return True
 
@@ -269,4 +269,4 @@ class BST(BinaryTree):
         See the insert_list function.
         '''
         for elements in xs:
-            self.remove(eleemnts)
+            self.remove(elements)
