@@ -132,33 +132,23 @@ class AVLTree(BST):
         '''
         if not self.root:
             self.root = Node(value)
-            return
-        if value == self.root.value:
-            return
         else:
-            self._insert(value, self.root)
-            if not self._is_avl_satisfied():
-                self.root = self.rebalance(self.root)
-                if not self.is_avl_satisfied():
-                    self.root = self.rebalance(self.root)
-                return
+            self.root = AVLTree._insert(value, self.root)
 
     @staticmethod
     def _insert(value, node):
-        if node.value == value:
-            return
         if value < node.value:
-            if node.left is None:
+            if not node.left:
                 node.left = Node(value)
-                return
             else:
-                return AVLTree._insert(value, node.left)
-        else:
-            if node.right is None:
+                AVLTree._insert(value, node.left)
+        elif value > node.value:
+            if not node.right:
                 node.right = Node(value)
-                return
             else:
-                return AVLTree._insert(value, node.right)
+                AVLTree._insert(value, node.right)
+        else:
+            print("Failure")
 
     def rebalance(self, begin):
         '''new function that takes parameters self and inception begin to
