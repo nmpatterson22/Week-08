@@ -151,7 +151,7 @@ class AVLTree(BST):
     def _insert(value, node):
         if value < node.value:
             if not node.left:
-                node.left = Node(Value)
+                node.left = Node(value)
             else:
                 node.right = Node(value)
         elif node.value > value:
