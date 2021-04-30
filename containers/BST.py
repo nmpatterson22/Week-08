@@ -57,6 +57,17 @@ class BST(BinaryTree):
             return BST._is_bst_satisfied(self.root)
         return True
 
+    def __equal__(self, time2):
+        l_1 = self.to_list('inorder')
+        l_2 = time2.t0_list('inorder')
+        for x in list_1:
+            if x not in l_2
+                return False
+        for x in l_2:
+            if x not in l_1
+                return False
+        return True
+
     @staticmethod
     def _is_bst_satisfied(node):
         '''
@@ -99,20 +110,18 @@ class BST(BinaryTree):
 
     @staticmethod
     def _insert(value, node):
-
         if value < node.value:
-            if node.left is not None:
-                BST._insert(value, node.left)
-            else:
+            if node.left is None:
                 node.left = Node(value)
-
-        elif value > node.value:
-            if node.right is not None:
-                BST._insert(value, node.right)
             else:
+                BST._insert(value, node.left)
+        elif value > node.value:
+            if node.right is None:
                 node.right = Node(value)
+            else:
+                BST._insert(value, node.right)
         else:
-            print("value in tree")
+            print("Value in Tree")
 
     def insert_list(self, xs):
         '''
@@ -259,5 +268,5 @@ class BST(BinaryTree):
         HINT:
         See the insert_list function.
         '''
-        for i in xs:
-            self.remove(i)
+        for elements in xs:
+            self.remove(eleemnts)
