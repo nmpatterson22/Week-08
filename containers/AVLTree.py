@@ -56,9 +56,12 @@ class AVLTree(BST):
         if node is None:
             return True
         else:
-            t1 = AVLTree._is_avl_satisfied(node.left)
-            t2 = AVLTree._is_avl_satisfied(node.right)
-            return AVLTree._balance_factor(node) in [-1, 0, 1] and t1 and t2
+            return all([
+            AVLTree._balance_factor(node) in [-1, 0, 1],
+            AVLTree._is_avl_satisfied(node.left),
+            AVLTree._is_avl_satisfied(node.right),
+            ])
+            
 
     @staticmethod
     def _left_rotate(node):
