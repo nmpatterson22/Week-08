@@ -164,14 +164,12 @@ class BST(BinaryTree):
         Implement this function.
         '''
         if node:
-            if node.value < value:
+            if value > node.value and node.right:
                 return BST._find(value, node.right)
-            elif node.value > value:
+            elif value < node.value and node.left:
                 return BST._find(value, node.left)
-            else:
+            if value == node.value:
                 return True
-        else:
-            return False
 
     def find_smallest(self):
         '''
