@@ -56,16 +56,8 @@ class BST(BinaryTree):
             return BST._is_bst_satisfied(self.root)
         return True
 
-    def __equal__(self, time2):
-        l_1 = self.to_list('inorder')
-        l_2 = time2.t0_list('inorder')
-        for x in l_1:
-            if x not in l_2:
-                return False
-        for x in l_2:
-            if x not in l_1:
-                return False
-        return True
+    def __eq__(self, t2):
+        return self.to_list('inorder') == t2.to_list('inorder')
 
     @staticmethod
     def _is_bst_satisfied(node):
