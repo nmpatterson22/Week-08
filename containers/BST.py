@@ -61,7 +61,7 @@ class BST(BinaryTree):
         l_1 = self.to_list('inorder')
         l_2 = time2.t0_list('inorder')
         for x in list_1:
-            if x not in l_2
+            if x not in l_2:
                 return False
         for x in l_2:
             if x not in l_1
