@@ -2,7 +2,7 @@
 
 Build status:
 
-1. [![](https://github.com/nmpatterson22/containers/workflows/tests-Heap/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-Heap)
-2. [![](https://github.com/nmpatterson22/containers/workflows/tests-BST/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-BST)
-3. [![](https://github.com/nmpatterson22/containers/workflows/tests-BinaryTree/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-BinaryTree)
-4. [![](https://github.com/nmpatterson22/containers/workflows/tests-AVLTree/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-AVLTree)
+[![tests-Heap](https://github.com/nmpatterson22/containers/workflows/tests-heap.yml/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-heap.yml)
+[![tests-BST](https://github.com/nmpatterson22/containers/workflows/tests-BST/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-BST)
+[![tests-BinaryTree](https://github.com/nmpatterson22/containers/workflows/tests-BinaryTree.yml/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-BinaryTree.yml)
+[![tests-AVLTree](https://github.com/nmpatterson22/containers/workflows/tests-AVLTree.yml/badge.svg)](https://github.com/nmpatterson22/containers/actions?query=workflow%3Atests-AVLTree.yml)
