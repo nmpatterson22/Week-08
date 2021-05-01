@@ -114,6 +114,7 @@ class Heap():
         else:
             self.root = Heap._insert(self.root, value)
 
+    @staticmethod
     def _insert(node, value):
         if node is None:
             return
@@ -207,6 +208,7 @@ class Heap():
         print(removed_value, str(node))
         return removed_value, node
 
+    @staticmethod
     def _trickle(node):
         if Heap._is_heap_satisfied(node):
             pass
