@@ -13,7 +13,8 @@ more practice with OOP-style programming and classes.
 
 from containers.BinaryTree import BinaryTree, Node
 import warnings
-warnings.filterwarnings.("ignore")
+warnings.filterwarnings("ignore")
+
 
 class Heap():
     '''
