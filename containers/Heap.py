@@ -95,28 +95,43 @@ class Heap(BinaryTree):
         insert functions.
         '''
 # Storing positional argument
-        if self.root is None:
-            self.root = Node(value)
-            self.root.children = 1
+        if self.root:
+            new_count = self.__len__()
+            next = "{0:b}".format(new_count + 1)[1:]
+            self.root = Heap._insert(self.root, value, next)
         else:
-            self.root = Heap._insert(self.root, value)
+            self.root = Node(value)
 
     @staticmethod
-    def _insert(node, value):
-        if node is None:
-            return
-        if node.left and node.right:
-            node.left = Heap._insert(node.left, value)
-            if node.value > node.left.value:
-                return Heap._upward(node, value)
-        if node.left is None:
-            node.left = Node(value)
-            if node.value > node.left.value:
-                return Heap._upward(node, value)
-        elif node.right is None:
-            node.right = Node(value)
-            if node.value > node.right.value:
-                return Heap._upward(node, value)
+    def _insert(node, value, next):
+        if next[0] == '0':
+            if not node.left:
+                node.left = Node(value)
+            else:
+                node.left = Heap._insert(node.left, value, next[1:])
+        if next[0] == '1':
+            if not node.right:
+                node.right = Node(value)
+            else:
+                node.right = Heap._insert(node.right, value, next[1:])
+
+        if next[0] == '0':
+            if node.left.value < node.value:
+                temp_value = node.value
+                node.value = node.left.value
+                node.left.value = temp_value
+                return node
+            else:
+                return node
+
+        if next[0] == '1':
+            if node.right.value < node.value:
+                temporary_value = node.value
+                node.value = node.right.value
+                node.right.value = temporary_value
+                return node
+            else:
+                return node
 
     def insert_list(self, xs):
         '''
@@ -159,41 +174,40 @@ class Heap(BinaryTree):
         but I personally found dividing up the code into two made the most
         sense.
         '''
-        if self.root is None:
-            return None
-        elif self.root.left is None and self.root.right is None:
-            self.root = None
+        if not self.root:
+            pass
         else:
-            replace = Heap._find_right(self.root)
-            self.root = Heap._remove(self.root)
-            if replace == self.root.value:
-                return
-            else:
-                self.root.value = replace
-            if Heap._is_heap_satisfied(self.root) is False:
-                return Heap._downward(self.root)
+            new_count = self.__len__()
+            next = "{0:b}".format(new_count)[1:]
+            last, self.root = Heap._remove_bottom_right(
+                self.root, next)
+            if self.root:
+                self.root.value = last
+            print(str(self.root))
+            self.root = Heap._trickle(self.root)
 
     @staticmethod
-    def _remove_bottom_right(node, remove):
-        removed_value = ""
-        if len(remove) == 0:
+    def _remove_bottom_right(node, next):
+        new_removed_value = ""
+        if len(next) == 0:
             return None, None
-        if remove[0] == '0':
-            if len(remove) == 1:
-                removed_value = node.left.value
+        if next[0] == '0':
+            if len(next) == 1:
+                new_removed_value = node.left.value
                 node.left = None
             else:
-                removed_value, node.left = Heap._remove_bottom_right(
-                    node.left, remove[1:])
+                new_removed_value, node.left = Heap._remove_bottom_right(
+                    node.left, next[1:])
 
-        if remove[0] == '1':
-            removed_value = node.right.value
-            node.right = None
-        else:
-            removed_value, node.right = Heap._remove_bottom_right(
-                node.right, remove[1:])
-        print(removed_value, str(node))
-        return removed_value, node
+        if next[0] == '1':
+            if len(next) == 1:
+                new_removed_value = node.right
+                node.right = None
+            else:
+                new_removed_value, node.right = Heap._remove_bottom_right(
+                    node.right, next[1:])
+        print(new_removed_value, str(node))
+        return new_removed_value, node
 
     @staticmethod
     def _trickle(node):
