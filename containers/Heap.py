@@ -128,9 +128,9 @@ class Heap(BinaryTree):
 
         if next[0] == '1':
             if node.right.value < node.value:
-                temporary_value = node.value
+                temp_value = node.value
                 node.value = node.right.value
-                node.right.value = temporary_value
+                node.right.value = temp_value
                 return node
             else:
                 return node
