@@ -18,7 +18,7 @@ class Heap(BinaryTree):
         super().__init__()
         if xs is not None:
             for x in xs:
-            self.insert_list(xs)
+                self.insert_list(xs)
 
     def __repr__(self):
         '''
