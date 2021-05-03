@@ -179,34 +179,34 @@ class Heap(BinaryTree):
             pass
         else:
             new_count = self.__len__()
-            new_next = "{0:b}".format(new_count)[1:]
-            last, self.root = Heap._remove_bottom_right(
-                self.root, new_next)
+            final = "{0:b}".format(new_count)[1:]
+            final, self.root = Heap._remove_bottom_right(
+                self.root, final)
             if self.root:
-                self.root.value = last
+                self.root.value = final
             print(str(self.root))
             self.root = Heap._trickle(self.root)
 
     @staticmethod
-    def _remove_bottom_right(node, next):
+    def _remove_bottom_right(node, final):
         new_removed_value = ""
-        if len(new_next) == 0:
+        if len(final) == 0:
             return None, None
-        if new_next[0] == '0':
-            if len(new_next) == 1:
+        if final[0] == '0':
+            if len(final) == 1:
                 new_removed_value = node.left.value
                 node.left = None
             else:
                 new_removed_value, node.left = Heap._remove_bottom_right(
-                    node.left, new_next[1:])
+                    node.left, final[1:])
 
-        if new_next[0] == '1':
-            if len(new_next) == 1:
+        if final[0] == '1':
+            if len(final) == 1:
                 new_removed_value = node.right
                 node.right = None
             else:
                 new_removed_value, node.right = Heap._remove_bottom_right(
-                    node.right, new_next[1:])
+                    node.right, final[1:])
         print(new_removed_value, str(node))
         return new_removed_value, node
 
