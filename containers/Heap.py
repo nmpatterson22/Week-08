@@ -98,7 +98,7 @@ class Heap(BinaryTree):
         if self.root:
             new_count = self.__len__()
             next = "{0:b}".format(new_count + 1)[1:]
-            self.root = Heap._insert(value, self.root next)
+            self.root = Heap._insert(value, self.root, next)
         else:
             self.root = Node(value)
 
