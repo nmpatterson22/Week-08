@@ -16,9 +16,8 @@ class Heap(BinaryTree):
         then each element of xs needs to be inserted into the Heap.
         '''
         super().__init__()
-        if xs is not None:
-            for x in xs:
-                self.insert_list(xs)
+        if xs:
+            self.insert_list(xs)
 
     def __repr__(self):
         '''
@@ -57,21 +56,21 @@ class Heap(BinaryTree):
         FIXME:
         Implement this method.
         '''
-        place_left = True
-        place_right = True
-        if node is None:
+        fix = True
+        if not node:
             return True
-        if node.left:
-            if node.value > node.left.value:
-                return False
-            else:
-                place_left = Heap._is_heap_satisfied(node.left)
-        if node.right:
-            if node.value > node.right.value:
-                return False
-            else:
-                place_right = Heap._is_heap_satisfied(node.right)
-        return place_left and place_right
+        fix &= Heap._is_heap_satisfied(node.left)
+        fix &= Heap._is_heap_satisfied(node.right)
+
+        if not node.left:
+            fix &= True
+        else:
+            fix &= (node.left.value >= node.value)
+        if not node.right:
+            fix &= True
+        else:
+            fix &= (node.right.value >= node.value)
+        return fix
 
     def insert(self, value):
         '''
@@ -180,9 +179,9 @@ class Heap(BinaryTree):
             pass
         else:
             new_count = self.__len__()
-            next = "{0:b}".format(new_count)[1:]
+            new_next = "{0:b}".format(new_count)[1:]
             last, self.root = Heap._remove_bottom_right(
-                self.root, next)
+                self.root, new_next)
             if self.root:
                 self.root.value = last
             print(str(self.root))
@@ -191,23 +190,23 @@ class Heap(BinaryTree):
     @staticmethod
     def _remove_bottom_right(node, next):
         new_removed_value = ""
-        if len(next) == 0:
+        if len(new_next) == 0:
             return None, None
-        if next[0] == '0':
-            if len(next) == 1:
+        if new_next[0] == '0':
+            if len(new_next) == 1:
                 new_removed_value = node.left.value
                 node.left = None
             else:
                 new_removed_value, node.left = Heap._remove_bottom_right(
-                    node.left, next[1:])
+                    node.left, new_next[1:])
 
-        if next[0] == '1':
-            if len(next) == 1:
+        if new_next[0] == '1':
+            if len(new_next) == 1:
                 new_removed_value = node.right
                 node.right = None
             else:
                 new_removed_value, node.right = Heap._remove_bottom_right(
-                    node.right, next[1:])
+                    node.right, new_next[1:])
         print(new_removed_value, str(node))
         return new_removed_value, node
 
