@@ -10,11 +10,6 @@ class Heap(BinaryTree):
     '''
 
     def __init__(self, xs=None):
-        '''
-        FIXME:
-        If xs is a list (i.e. xs is not None),
-        then each element of xs needs to be inserted into the Heap.
-        '''
         super().__init__()
         if xs:
             self.insert_list(xs)
@@ -65,11 +60,11 @@ class Heap(BinaryTree):
         y_close = Heap._is_heap_satisfied(node.right)
 
         if node.left:
-            x_far = node.value <= node.left.value and x_far
+            far = node.value <= node.left.value and x_far
         if node.right:
-            y_close = node.value <= node.right.value and y_close
+            close = node.value <= node.right.value and y_close
 
-        return x_far and y_close
+        return far and close
 
     def insert(self, value):
         '''
@@ -224,10 +219,11 @@ class Heap(BinaryTree):
                 return None
         return node
 
-   @staticmethod
-   def _trickle(node):
+    @staticmethod
+    def _trickle(node):
         if node.left is None and node.right is None:
             return node
+
         baby = node.right is None
         parent = node.left is None
 
