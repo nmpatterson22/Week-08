@@ -96,7 +96,7 @@ class Heap(BinaryTree):
             self.root = Heap._insert(self.root, value)
 
     @staticmethod
-    def _insert(node, value, next):
+    def _insert(node, value):
         if node is None:
             return
 
