@@ -113,6 +113,8 @@ class Heap(BinaryTree):
             if node.value > node.right.value:
                 return Heap._forward(node, value)
 
+        return node
+
     @staticmethod
     def _forward(node, value):
         if Heap._is_heap_satisfied(node) is True:
