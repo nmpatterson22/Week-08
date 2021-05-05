@@ -197,7 +197,7 @@ class Heap(BinaryTree):
             else:
                 self.root.value = move_right
             if Heap._is_heap_satisfied(self.root) is False:
-                return Heap._forward(self.root)
+                return Heap._trickle(self.root)
 
     @staticmethod
     def _find_right(node):
