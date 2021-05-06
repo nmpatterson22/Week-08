@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work for us
 setup(
 name = "cmc_csci46_vibingcat_datastructures",
-version = "1.0,0"
+version = "1.0,0",
 description = "Data Strucutres Assignment",
 long_description = "In README File",
 long_description_content_type = "text/markdown",
